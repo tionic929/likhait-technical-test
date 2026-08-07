@@ -25,6 +25,12 @@ export interface MonthlySummary {
   topCategories: TopCategory[];
 }
 
+export interface Category {
+  id?: number;
+  name: string;
+  emoji?: string;
+}
+
 export interface CategoryBreakdown {
   category: string;
   total: number;
