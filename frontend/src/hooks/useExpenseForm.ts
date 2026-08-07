@@ -32,9 +32,14 @@ export function useExpenseForm({ initialData, onSubmit }: UseExpenseFormProps) {
 
   const validateForm = (): boolean => {
     const newErrors: Partial<ExpenseFormData> = {};
+    const currentDate = formatDate(new Date());
 
     if (!formData.amount || Number(formData.amount) <= 0) {
       newErrors.amount = "Amount must be greater than 0";
+    }
+
+    if (formData.date > currentDate) {
+      newErrors.date = "Date must not be in the future";
     }
 
     if (!formData.description.trim()) {
